@@ -1,5 +1,7 @@
 package com.kamil.java_demo;
 
+import java.util.stream.Stream;
+
 class MyRunnable implements Runnable {
 
     public void run() {
@@ -48,13 +50,21 @@ public class LambdaDemo {
         MyInterface nike2 = () -> {
             System.out.println("from nike2");
         };
-
-
         nike2.justDoIt();
 
         StringToInt stringToInt = name -> name.length();
-
         System.out.println(stringToInt.nameLength("Kamil"));
+
+        Stream<Object> objects = Stream.of("mariusz", "marek", "adrianna", "zenon", "rysiek", "halina");
+        Stream<String> names = Stream.of("mariusz", "marek", "adrianna", "zenon", "rysiek", "halina");
+
+
+        names.filter(name -> name.length() > 6)
+                .map(s -> s.length())
+                .forEach(x -> System.out.println(x));
+
+
+
 
     }
 
